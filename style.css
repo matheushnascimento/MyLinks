@@ -24,8 +24,12 @@
   --switch-bg-url: url(assets/sun.svg);
 }
 
+
+
 body {
+  transition: background .5s;
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 body * {
@@ -76,12 +80,15 @@ body * {
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
-  transition: left 0.3s ease;
+
+  animation: slide-back 0.2s forwards;
 }
 
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
 .light #switch button {
-  right: 0;
-  left: 50%;
+  animation: slide-in 0.2s forwards;
 }
 
 #switch span {
@@ -135,7 +142,6 @@ ul li a:hover {
 }
 
 /* social links */
-
 #social-links {
   display: flex;
   justify-content: center;
@@ -163,4 +169,35 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/* Media queries */
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }

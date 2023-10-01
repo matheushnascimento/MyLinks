@@ -1,20 +1,35 @@
 function toggleMode() {
-  const html = document.documentElement
-  const img = document.querySelector("#profile img")
+  const html = document.documentElement;
+  const profileImg = document.querySelector("#profile img");
 
-  html.classList.toggle("light")
+  html.classList.toggle("light");
 
   if (html.classList.contains("light")) {
-    img.setAttribute("src", "./assets/avatar-light.png")
-    img.setAttribute(
-      "alt",
-      "Foto de Mayk Brito sorrind, usando óculos e camiseta preta, barba e fundo amarelo"
-    )
+    profileImg.style.transition = "opacity .5s";
+    profileImg.style.opacity = "0";
+
+    setTimeout(() => {
+      profileImg.setAttribute("src", "./assets/avatar-light.png");
+      profileImg.setAttribute(
+        "alt",
+        "Foto de Matheus Nascimento de perfil, usando óculos, fundo claro"
+        );
+
+      profileImg.style.opacity = "1";
+    }, 500);
   } else {
-    img.setAttribute("src", "./assets/avatar.png")
-    img.setAttribute(
-      "alt",
-      "Foto de Mayk Brito sorrindo, usando óculos escuros e camiseta preta, barba e azul e roxo"
-    )
+    profileImg.style.transition = "opacity .5s";
+    profileImg.style.opacity = "0";
+
+    setTimeout(() => {
+      profileImg.setAttribute("src", "./assets/avatar.png");
+      profileImg.setAttribute(
+        "alt",
+        "Foto de Matheus Nascimento de frente, fundo escuro"
+        
+      );
+
+      profileImg.style.opacity = "1";
+    }, 500);
   }
 }
